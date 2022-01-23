@@ -1,13 +1,16 @@
 let btn=document.getElementById('btn');
+var country_name;
 btn.addEventListener('click',function fun(){
     let input=document.getElementById('input');
-    console.log(input.value);
+    country_name=input.value;
+    universe();
    
 });
-fun();
+let country=[];
 
-(async()=>{
-    const api=await fetch( `http://universities.hipolabs.com/search?country={country_name}`)
-     country=await api.json();
+const universe= async()=>{
+    const api=await fetch( `http://universities.hipolabs.com/search?country=${country_name}`)
+     country=await api.json(); 
     console.log(country);
-})();
+    document.write(country.name)
+};
